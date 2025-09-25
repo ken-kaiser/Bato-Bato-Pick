@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+    <title>Bato-Bato Pick</title>
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!--Google Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="container-fluid">
+       <header>
+            <h2>Bato-Bato Pick</h2>
+        </header>
+        <section id="score_board">
+            <div class="badge" id="comp_label">Computer</div>
+            <div class="badge" id="user_label">User</div>
+            <span id="user_score">0</span> : <span id="computer_score">0</span>
+        </section>
+        <div class="result">
+            <p id="round_result"></p>
+
+            <!-- Instructions Button -->
+            <button id="instructionsBtn">Instructions</button>
+            
+            <!-- Introduction Modal -->
+            <div id="introModal" class="modal">
+                <div class="modal-content">
+                    <h2>Welcome to Bato-Bato Pick 🎮</h2>
+                    <p>
+                    This is the classic Filipino game of <strong>Bato</strong>, <strong>Papel</strong>, at <strong>Gunting</strong> 
+                    — also known as Rock, Paper, Scissors! <br><br>
+                    🪨 Bato (Rock) smashes Gunting (Scissors) <br>
+                    ✂️ Gunting (Scissors) cuts Papel (Paper) <br>
+                    📜 Papel (Paper) covers Bato (Rock) <br><br>
+                    First to reach the target score wins!  
+                    </p>
+                    <p style="text-align:center; margin-top:1rem;">
+                    <button id="closeIntro" class="btn">Let's Play!</button>
+                    </p>
+                </div>
+            </div>
+
+           <!-- Instructions Modal -->
+            <div id="instructionsModal" class="modal">
+                <div class="modal-content">
+                    <span id="closeModal">&times;</span>
+                    <h2>Bato-Bato Pick - Instructions</h2>
+                    <div class="instruction-list">
+                        <p> <img src="./images/rock.png" alt="Bato" class="icon"> <strong>Bato</strong> pildi ang <img src="./images/scissor.png" alt="Gunting" class="icon"> <strong>Gunting</strong></p>
+                        <p> <img src="./images/scissor.png" alt="Gunting" class="icon"> <strong>Gunting</strong> pildi ang <img src="./images/paper.png" alt="Papel" class="icon"> <strong>Papel</strong></p>
+                        <p> <img src="./images/paper.png" alt="Papel" class="icon"> <strong>Papel</strong> pildi ang <img src="./images/rock.png" alt="Bato" class="icon"> <strong>Bato</strong></p>
+                        <p> First-to-N mode: The first player to reach the selected score wins</p>
+                        <p> Use <strong>RESET</strong> to start a new game</p>
+                        <p> Turn music on/off using the 🎵 button at the bottom right</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Level Selector -->
+            <div id="level_selector">
+              <label for="game_level">Game Level:</label>
+              <select id="game_level">
+                  <option value="3">First to 3</option>
+                  <option value="4">First to 4</option>
+                  <option value="5" selected>First to 5</option>
+              </select>
+            </div>
+
+            <!-- Reset Button -->
+            <div id="round_result_Button">
+              <button type="button" class="btn btn-primary" name="reset" value="reset" id="reset">Reset</button>
+            </div>
+
+            <p id="result_text">To begin choose one from Bato, Papel or Gunting</p>
+        </div>
+        <br>
+        <div class="choices">
+            <div class="choice" id="rock" value="1">
+                <img src="./images/rock.png" alt="Bato" value="1" width="150" height="150">
+            </div>
+            <div class="choice" id="paper" value="2">
+                <img src="./images/paper.png" alt="Papel" value="2" width="150" height="150">
+            </div>
+            <div class="choice" id="scissor" value="3">
+                <img src="./images/scissor.png" alt="Gunting" value="3" width="150" height="150">
+            </div>
+        </div>   
+
+        <!-- Background Music -->
+        <audio id="bg-music" src="sounds/bg-music.ogg" loop></audio>
+        <button id="toggle-music">🔊 Music On</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

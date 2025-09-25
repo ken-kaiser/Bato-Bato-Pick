@@ -1,0 +1,500 @@
+*{
+    padding: 0;
+    margin: 0 ;
+    box-sizing: border-box;
+    line-height: 1.6;
+    font-family: 'Press Start 2P', cursive;
+}
+
+@media(max-width : 700px) {
+    #socre_board{
+        padding: 2rem 0rem;
+    }
+
+    #user_label {
+        left: -20%;
+
+    }
+
+    #comp_label{
+        right: -30px;
+    }
+
+}
+
+.Heading{
+    text-align: center;
+}
+
+@media(max-width : 600px){
+    #user_label{
+        transform: rotate(90deg);
+    }
+    #comp_label{
+        right: -30px;
+        top : 35%;
+        transform:  rotate(90deg);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  header h2 {
+    font-size: 1.5rem;
+  }
+
+  .choices {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .choice {
+    max-width: 120px;
+  }
+
+  #result_text {
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 0 10px;
+  }
+
+  #instructionsBtn,
+  #toggle-music {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+
+header{
+    margin-top: 20px;
+    padding: 1rem 0rem;
+    text-align : center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color : gold;
+}
+
+html, body {
+  height: 100%;             
+  margin: 0;
+  padding: 0;
+  overflow: hidden;                
+}
+
+body {
+    background:radial-gradient(circle at top, #1a1a40, #0d0d1a);
+    color : gold;
+    font-family: 'Orbitron', sans-serif;
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+header h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.2rem;
+    color: gold;
+    text-shadow: 0 0 5px #ffef8a, 0 0 10px #ffd700, 0 0 20px #ffae00;
+}
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    background: #222;
+    color: gold;
+    border: 2px solid gold;
+    padding: 0.8rem 1.5rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+button:hover {
+    background: gold;
+    color: #222;
+    box-shadow: 0 0 10px gold, 0 0 20px orange;
+    cursor: pointer;
+}
+
+.instruction-list p {
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+    margin: 6px 0; 
+}
+
+.instruction-list p::before {
+    content: "•"; 
+    font-size: 18px; 
+    padding-left: 10px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+#reset {
+    font-family: 'Press Start 2P', cursive;
+    background: #222;
+    margin: 0.5rem 0rem 1rem;
+    color: gold;
+    border: 2px solid gold;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+#reset:hover {
+    background: gold;
+    color: #222;
+    box-shadow: 0 0 10px gold, 0 0 20px orange;
+    cursor: pointer;
+}
+
+#score_board {
+    border: 2px solid gold;
+    width: 90%;
+    margin: 1rem auto;
+    border-radius: 10px;
+    padding: 1rem 0rem;
+    font-size: 2rem;
+    position: relative;
+    text-align: center;
+    color: gold;
+    text-shadow: 0 0 10px gold, 0 0 20px orange, 0 0 30px red;
+    box-shadow: 0 0 20px gold, 0 0 40px orange, inset 0 0 10px #ffcc00;
+    background: rgba(0,0,0,0.4);
+    max-width: 350px;
+}
+
+#toggle-music {
+  font-family: 'Press Start 2P', cursive;
+  background: #222;
+  color: gold;
+  border: 2px solid gold;
+  padding: 0.3rem 0.6rem;   
+  font-size: 0.7rem;        
+  border-radius: 5px;
+  margin: 10px auto;
+  display: block;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1000;
+}
+
+#toggle-music:hover {
+  background: gold;
+  color: #222;
+  box-shadow: 0 0 8px gold, 0 0 16px orange;
+  cursor: pointer;
+}
+
+.badge{
+    font-size: 1rem;
+    position: absolute;
+    background-color: gold;
+    color : rgb(28,28,59);
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
+}
+
+#level_selector {
+  text-align: center;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: gold;
+  font-weight: bold;
+  text-shadow: 0 0 6px gold, 0 0 12px orange;
+}
+
+#level_selector label {
+  margin-right: 0.5rem;
+}
+
+#game_level {
+  background: rgb(20, 20, 40);
+  color: gold;
+  border: 1.5px solid gold;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 6px gold, 0 0 12px orange;
+}
+
+#game_level:hover {
+  background: rgb(30, 30, 60);
+  box-shadow: 0 0 10px gold, 0 0 20px orange;
+}
+
+#game_level option {
+  background: rgb(20, 20, 40);
+  color: gold;
+  font-weight: bold;
+}
+
+/* Modal background */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 2000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  overflow: auto;
+  z-index: 5000;
+}
+
+/* Modal content box */
+.modal-content {
+  background: url("bato2pick.png") center/cover no-repeat; 
+  color: gold;
+  margin: 8% auto;
+  padding: 25px;
+  border: 2px solid gold;
+  border-radius: 15px;
+  width: 90%;
+  font-family: 'Press Start 2P', cursive;
+  text-align: left;
+  box-shadow: 0 0 20px gold, 0 0 40px orange, inset 0 0 15px rgba(0,0,0,0.7);
+  z-index: 3000;
+  position: relative;
+  overflow: hidden;
+  max-width: 600px;
+}
+
+.modal-content::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55); 
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.modal-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Title styling */
+.modal-content h2 {
+  font-size: 1.2rem;   
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 0 5px gold;
+}
+
+/* Paragraphs styling */
+.modal-content p {
+  font-size: 0.75rem;  
+  margin: 0.6rem 0;
+  color: #f5d76e;
+}
+
+/* Highlight important words */
+.modal-content strong {
+  color: #fff;
+  text-shadow: 0 0 5px gold;
+}
+
+/* Close button */
+#closeModal {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: gold;
+}
+#closeModal:hover {
+  color: red;
+}
+
+#instructionsBtn {
+  font-family: 'Press Start 2P', cursive;
+  background: #222;
+  color: gold;
+  border: 2px solid gold;
+  padding: 0.3rem 0.6rem;  
+  font-size: 0.7rem;        
+  border-radius: 5px;
+  margin: 10px auto;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  bottom: 15px;   
+  left: 15px;     
+  z-index: 1000;
+}
+
+#instructionsBtn:hover {
+  background: gold;
+  color: #222;
+  box-shadow: 0 0 8px gold, 0 0 16px orange;
+  cursor: pointer;
+}
+
+/* Intro modal override for bigger look */
+#introModal .modal-content {
+  background: url("bato2pick.png") center/cover no-repeat;
+  position: relative;
+  width: 50%;
+  margin-top: 8%;
+  padding: 30px;
+}
+
+#introModal .modal-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  border-radius: inherit;
+  z-index: 0;
+}
+
+#introModal .modal-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+#introModal h2 {
+  color: #fff;
+  text-shadow: 0 0 5px gold;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#introModal p {
+  font-size: 0.85rem;
+  color: #f5d76e;
+  line-height: 1.8;
+}
+
+#closeIntro {
+  background: gold;
+  color: #222;
+  border: 2px solid gold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  box-shadow: 0 0 10px gold, 0 0 20px orange;
+}
+#closeIntro:hover {
+  background: #222;
+  color: gold;
+  box-shadow: 0 0 15px gold, 0 0 30px orange;
+}
+
+#comp_label{
+right: -30%;;
+top : 35%;
+
+}
+#user_label{
+    left: -10%;
+    top : 35%;
+}
+
+.result,.table_container{
+    text-align: center;
+    font-size: 1.5rem;
+
+}
+
+.choices{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.choice {
+  flex: 1 1 140px; 
+  max-width: 200px; 
+  text-align: center;
+  border: 8px solid gold;
+  border-radius: 50%;
+  padding: 0.8rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.choice img {
+  max-height: 140px;
+  width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.choice:hover{
+    border: 3px solid gold;
+    cursor: pointer;
+    background: rgb(8,8,17);
+    box-shadow: 0 0 15px gold, 0 0 30px orange;
+    transform: scale(1.1);
+}
+
+choice > img {
+    width: 50%;
+}
+
+.choice > .win {
+    border : 3px solid green;
+    box-shadow:  1px 1px 15px green;
+}
+
+.choice > .lost {
+    border : 3px solid green;
+    box-shadow:  1px 1px 15px green;
+}
+
+.choice > .draw {
+    border : 3px solid green;
+    box-shadow:  1px 1px 15px green;
+}
+
+.choice > .reset {
+    border : 3px solid green;
+    box-shadow:  1px 1px 15px green;
+}
+
+table,thead,tbody{
+    border : "1px solid white";
+    color : white;
+}
+thead{
+    font-weight : bold;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-15px); }
+  40% { transform: translateX(15px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.6s;
+}
+
+/* Fix Scissor alignment */
+#scissor img {
+  display: block;
+  margin: 0 auto;
+  padding-top: 20px;   
+  padding-bottom: 10px; 
+  max-height: 140px;
+  object-fit: contain;
+}
