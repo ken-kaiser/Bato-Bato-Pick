@@ -196,6 +196,21 @@ window.addEventListener("click", (e) => {
 const introModal = document.getElementById("introModal");
 const closeIntro = document.getElementById("closeIntro");
 
+// Arcade Tip Modal Logic
+const tipModal = document.getElementById("tipModal");
+const tipText = document.getElementById("tipText");
+const closeTip = document.getElementById("closeTip");
+
+closeTip.addEventListener("click", () => {
+  tipModal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === tipModal) {
+    tipModal.style.display = "none";
+  }
+});
+
 // Show intro modal on page load
 window.addEventListener("load", () => {
   introModal.style.display = "block";
@@ -211,12 +226,30 @@ function fetchArcadeAdvice() {
   fetch("https://api.adviceslip.com/advice")
     .then(res => res.json())
     .then(data => {
-      const advice = `Arcade Tip: ${data.slip.advice}`;
-      resultText_p.innerHTML += `<br><small>${advice}</small>`;
-      resultText_p.style.fontSize = "0.9rem";
-      resultText_p.style.lineHeight = "1.4";
+      tipText.textContent = data.slip.advice;
+      tipModal.style.display = "block";
     })
     .catch(err => {
       console.warn("Advice API error:", err);
     });
 }
+
+// Theme Switcher Logic
+const themes = ["default", "neon-blue", "cyberpunk", "retro-green"]; 
+let currentTheme = 0;
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click", () => {
+  
+  if (themes[currentTheme] !== "default") {
+    document.body.classList.remove(themes[currentTheme]);
+  }
+  // switch to next theme
+  currentTheme = (currentTheme + 1) % themes.length;
+
+  if (themes[currentTheme] !== "default") {
+    document.body.classList.add(themes[currentTheme]);
+  }
+
+  console.log("Theme switched to:", themes[currentTheme]);
+});

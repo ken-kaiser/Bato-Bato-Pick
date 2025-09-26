@@ -84,11 +84,35 @@ html, body {
 }
 
 body {
-    background:radial-gradient(circle at top, #1a1a40, #0d0d1a);
+    background: radial-gradient(circle at top, #1a1a40, #0d0d1a, #000);
     color : gold;
     font-family: 'Orbitron', sans-serif;
     min-height: 100vh;
     background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(2px 2px at 20% 30%, gold, transparent),
+              radial-gradient(2px 2px at 70% 80%, orange, transparent),
+              radial-gradient(1px 1px at 50% 60%, #fff, transparent),
+              radial-gradient(2px 2px at 90% 20%, #ffd700, transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.35;             
+  z-index: 0;
+  pointer-events: none;
+  animation: twinkle 6s infinite alternate ease-in-out;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.2; transform: scale(1); }
+  50%  { opacity: 0.5; transform: scale(1.05); }
+  100% { opacity: 0.3; transform: scale(1); }
 }
 
 header h2 {
@@ -316,7 +340,7 @@ button:hover {
   color: gold;
 }
 #closeModal:hover {
-  color: red;
+  color: rgb(255, 35, 35);
 }
 
 #instructionsBtn {
@@ -337,6 +361,30 @@ button:hover {
 }
 
 #instructionsBtn:hover {
+  background: gold;
+  color: #222;
+  box-shadow: 0 0 8px gold, 0 0 16px orange;
+  cursor: pointer;
+}
+
+#themeBtn {
+  font-family: 'Press Start 2P', cursive;
+  background: #222;
+  color: gold;
+  border: 2px solid gold;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
+  border-radius: 5px;
+  margin: 50px -85px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  bottom: 15px;   
+  left: 100px;     
+  z-index: 1000;
+}
+
+#themeBtn:hover {
   background: gold;
   color: #222;
   box-shadow: 0 0 8px gold, 0 0 16px orange;
@@ -497,4 +545,74 @@ thead{
   padding-bottom: 10px; 
   max-height: 140px;
   object-fit: contain;
+}
+
+/* Advice Tip Modal */
+#tipModal .tip-content {
+  position: relative;
+  background: radial-gradient(circle at top, #0d1b2a, #000814);
+  color: gold;
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 15% auto;
+  padding: 20px;
+  border: 2px solid gold;
+  border-radius: 12px;
+  width: 85%;
+  max-width: 500px;
+  box-shadow: 0 0 20px gold, 0 0 40px orange;
+  animation: tipPop 0.5s ease;
+}
+
+#closeTip {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: gold;
+  z-index: 2;
+}
+
+#closeTip:hover {
+  color: rgb(255, 35, 35);
+}
+
+@keyframes tipPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+body.cyberpunk {
+  background: radial-gradient(circle at top, #2a003f, #0d001a, #000);
+  color: #ff77ff;
+}
+body.cyberpunk #score_board,
+body.cyberpunk .modal-content {
+  border-color: #ff77ff;
+  box-shadow: 0 0 15px #ff77ff, 0 0 30px magenta;
+}
+body.cyberpunk header h2 {
+  color: #ff77ff;
+  text-shadow: 0 0 8px #ff77ff, 0 0 16px magenta;
+}
+
+body.neon-blue {
+  background: radial-gradient(circle at top, #001f3f, #000814, #000);
+  color: cyan;
+}
+body.neon-blue #score_board,
+body.neon-blue .modal-content {
+  border-color: cyan;
+  box-shadow: 0 0 15px cyan, 0 0 30px blue;
+}
+
+body.retro-green {
+  background: radial-gradient(circle at top, #002a00, #000, #000);
+  color: #00ff66;
+}
+body.retro-green #score_board,
+body.retro-green .modal-content {
+  border-color: #00ff66;
+  box-shadow: 0 0 15px #00ff66, 0 0 30px limegreen;
 }
