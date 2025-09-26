@@ -64,8 +64,8 @@ loseSound.preload = 'auto';
 
 // optional: adjust volumes
 clickSound.volume = 0.8;
-winSound.volume = 0.9;
-loseSound.volume = 0.9;
+winSound.volume = 0.5;
+loseSound.volume = 0.5;
 
 function safePlay(audio) {
   if (!audio) return;
@@ -187,12 +187,12 @@ function animateChoice(choiceDiv, userSelection) {
   }, 800); // Chant speed
 }
 
-// --------- Attach handlers ----------
+// Attach handlers 
 rock_div.addEventListener('click', () => animateChoice(rock_div, 'Bato'));
 paper_div.addEventListener('click', () => animateChoice(paper_div, 'Papel'));
 scissor_div.addEventListener('click', () => animateChoice(scissor_div, 'Gunting'));
 
-// --------- Background music setup ----------
+// Background music setup 
 document.addEventListener('DOMContentLoaded', () => {
   const bgMusic = document.getElementById('bg-music');
   const toggleMusicBtn = document.getElementById('toggle-music');
@@ -301,7 +301,7 @@ themeBtn.addEventListener("click", () => {
   console.log("Theme switched to:", themes[currentTheme]);
 });
 
-// --------- Fullscreen toggle ---------- 
+// Fullscreen toggle 
 const fullscreenBtn = document.getElementById("fullscreenBtn");
 
 fullscreenBtn.addEventListener("click", () => {
