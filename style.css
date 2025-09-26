@@ -445,11 +445,12 @@ button:hover {
 }
 
 #comp_label{
-right: -33%;;
-top : 35%;
-
+  position: absolute;
+  right: -33%;
+  top : 35%;
 }
 #user_label{
+    position: absolute;
     left: -15%;
     top : 35%;
 }
@@ -746,4 +747,43 @@ body.retro-green .modal-content {
 
 :fullscreen #chantText {
   font-size: 1.2rem;
+}
+
+/* Adjust labels when fullscreen is active */
+body.fullscreen-active #user_label {
+  top: 10px;
+  margin-left: -35%;
+  font-size: 0.9rem;
+}
+
+body.fullscreen-active #comp_label {
+  top: 10px;
+  margin-right: -60%;
+  font-size: 0.9rem;
+}
+
+:fullscreen #user_label {
+  left: 10px;      /* align neatly on the left */
+}
+
+:fullscreen #comp_label {
+  right: 10px;     /* align neatly on the right */
+}
+
+
+/* Default scaling */
+#gameContainer {
+  transform: scale(1);
+  transform-origin: top center;
+}
+
+/* When fullscreen, shrink everything slightly */
+:fullscreen #gameContainer {
+  transform: scale(0.9);
+}
+
+@media (max-width: 600px) {
+  :fullscreen #gameContainer {
+    transform: scale(0.8);
+  }
 }
