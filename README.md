@@ -9,6 +9,7 @@ It combines **retro neon visuals**, **arcade-style sound effects**, and even **A
 **Classic Gameplay** – Rock beats Scissors, Scissors beat Paper, Paper beats Rock.  
 **Background Music** – Toggle arcade-style background music with a button.  
 **Responsive Design** – Fully playable on desktop and mobile.  
+**Battle Modal Animation** - Hands shake with the Filipino chant “Bato… Bato… Pick!” before each reveal.
 **Arcade Theme** – Neon gold retro UI with glowing effects.  
 **API Fun** – Displays random jokes or advice when the game ends.  
 **Instructions & Intro Modals** – Easy-to-understand guide for first-time players.  
@@ -18,8 +19,9 @@ It combines **retro neon visuals**, **arcade-style sound effects**, and even **A
 
 ## How to Play
 1. Choose your move: **Bato (Rock)**, **Papel (Paper)**, or **Gunting (Scissors)**.  
-2. The computer will make its move.  
-3. Winner of each round is announced instantly.  
+2. Watch the fists shake with the chant: “Bato… Bato… Pick!”
+3. Both choices are revealed perfectly.  
+3. Winner of round is announced.  
 4. First to reach the target score (3, 4, or 5) wins the game!  
 5. Reset anytime with the **RESET** button.  
 
@@ -36,9 +38,9 @@ It combines **retro neon visuals**, **arcade-style sound effects**, and even **A
 ## Project Structure
 ├── index.html # Main game file
 ├── style.css # Styling and responsive design
-├── script.js # Game logic + API integration
+├── script.js # Game logic, animations, API integration
 ├── images/ # Rock, Paper, Scissors icons
-├── sounds/ # Background music
+├── sounds/ # Background music & effects
 └── README.md # Project documentation
 
 ---
@@ -55,7 +57,7 @@ This project was created for fun and learning purposes.
 - Add a **leaderboard** to track high scores.  
 - More theme options (e.g., cyberpunk, retro console). 
 
-*"The Filipino classic, reborn in neon arcade style!"*  
+*"The Filipino classic, reborn in spooky neon arcade style!"*  
 
 ![Game Screenshot](screenshots/game-preview.png)
 
