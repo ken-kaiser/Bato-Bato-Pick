@@ -623,7 +623,7 @@ body.retro-green .modal-content {
   padding: 30px;
   border: 2px solid gold;
   border-radius: 15px;
-  background: rgba(0,0,0,0.85);
+  background: radial-gradient(circle at top, #1a1a40, #0d0d1a, #000);
   max-width: 600px;
   margin: 10% auto;
 }
