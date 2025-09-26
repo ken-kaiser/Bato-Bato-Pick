@@ -300,3 +300,13 @@ themeBtn.addEventListener("click", () => {
 
   console.log("Theme switched to:", themes[currentTheme]);
 });
+
+document.getElementById("fullscreenBtn").addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(err => {
+      alert(`Error attempting fullscreen: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+});
