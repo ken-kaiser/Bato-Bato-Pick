@@ -44,7 +44,7 @@ class RockPaperScissors {
   }
 }
 
-// --------- DOM & Game setup ----------
+// DOM & Game setup 
 const game = new RockPaperScissors('User1');
 const userScore_span = document.getElementById("user_score");
 const computerScore_span = document.getElementById("computer_score");
@@ -54,7 +54,7 @@ const rock_div = document.getElementById("rock");
 const paper_div = document.getElementById("paper");
 const scissor_div = document.getElementById("scissor");
 
-// --------- Audio setup (preload + safe play) ----------
+// Audio setup (preload + safe play)
 const clickSound = new Audio('sounds/click.mp3');
 clickSound.preload = 'auto';
 const winSound = new Audio('sounds/win.mp3');
@@ -82,7 +82,7 @@ function safePlay(audio) {
   }
 }
 
-// --------- Game Over flag ----------
+// Game Over flag 
 let gameOver = false;
 let maxScore = 5;
 
@@ -94,7 +94,7 @@ if (gameLevelSelect) {
   });
 }
 
-// --------- Reset function ----------
+// Reset function 
 reset_btn.addEventListener("click", reset_function, false);
 function reset_function() {
   game.score.user = 0;
@@ -106,38 +106,85 @@ function reset_function() {
   gameOver = false; // reset Game Over state
 }
 
-// --------- Animation + play flow ----------
+// Animation + play flow 
 function animateChoice(choiceDiv, userSelection) {
-  if (gameOver) return; // stop playing if game is over
+  if (gameOver) return;
 
-  safePlay(clickSound);
-  choiceDiv.classList.add("shake");
+  const battleModal = document.getElementById("battleModal");
+  const chantText = document.getElementById("chantText");
+  const userHand = document.querySelector(".user-hand");
+  const cpuHand = document.querySelector(".cpu-hand");
 
-  setTimeout(() => {
-    choiceDiv.classList.remove("shake");
+  // Reset to fists + animations
+  userHand.style.backgroundImage = 'url("./images/rock.png")';
+  cpuHand.style.backgroundImage = 'url("./images/rock.png")';
+  userHand.style.animation = "fist-bump 0.5s infinite alternate";
+  cpuHand.style.animation = "fist-bump 0.5s infinite alternate";
 
-    const winner = game.play(userSelection);
-    userScore_span.innerHTML = game.score.user;
-    computerScore_span.innerHTML = game.score.cpu;
+  // Show modal
+  battleModal.style.display = "block";
 
-    setTimeout(() => {
-      if (winner === 'user') safePlay(winSound);
-      else if (winner === 'cpu') safePlay(loseSound);
-    }, 120);
+  // Chant sequence
+  const chant = ["Bato...", "Bato...", "Pick!"];
+  let i = 0;
 
-    // Check for Game Over
-    if (game.score.user === maxScore || game.score.cpu === maxScore) {
-      gameOver = true;
-      if (game.score.user === maxScore) {
-        resultText_p.innerHTML = `Daog Ka! (First to ${maxScore})`;
-      } else {
-        resultText_p.innerHTML = `Daog ang CPU! (First to ${maxScore})`;
-      }
-      resultText_p.style.textShadow = "0 0 10px gold, 0 0 20px red, 0 0 40px orange";
+  // Show first chant immediately
+  chantText.textContent = chant[i];
+  i++;
 
-      fetchArcadeAdvice();
+  const chantInterval = setInterval(() => {
+    chantText.textContent = chant[i];
+    i++;
+    if (i === chant.length) {
+      clearInterval(chantInterval);
+
+      // Reveal choices after short pause
+      setTimeout(() => {
+        const cpuSelection = game.generateCPUResponse();
+
+        // Update hands to final choices
+        if (userSelection === "Bato") userHand.style.backgroundImage = 'url("./images/rock.png")';
+        if (userSelection === "Papel") userHand.style.backgroundImage = 'url("./images/paper.png")';
+        if (userSelection === "Gunting") userHand.style.backgroundImage = 'url("./images/scissor.png")';
+
+        if (cpuSelection === "Bato") cpuHand.style.backgroundImage = 'url("./images/rock.png")';
+        if (cpuSelection === "Papel") cpuHand.style.backgroundImage = 'url("./images/paper.png")';
+        if (cpuSelection === "Gunting") cpuHand.style.backgroundImage = 'url("./images/scissor.png")';
+
+        // Stop animations
+        userHand.style.animation = "none";
+        cpuHand.style.animation = "none";
+
+        // Close modal + continue game
+        setTimeout(() => {
+          battleModal.style.display = "none";
+
+          const winner = game.determineWinner(userSelection, cpuSelection);
+          if (winner === "user") game.score.user++;
+          if (winner === "cpu") game.score.cpu++;
+
+          userScore_span.innerHTML = game.score.user;
+          computerScore_span.innerHTML = game.score.cpu;
+
+          if (winner === "user") safePlay(winSound);
+          else if (winner === "cpu") safePlay(loseSound);
+
+          // Game Over check
+          if (game.score.user === maxScore || game.score.cpu === maxScore) {
+            gameOver = true;
+            if (game.score.user === maxScore) {
+              resultText_p.innerHTML = `Daog Ka! (First to ${maxScore})`;
+            } else {
+              resultText_p.innerHTML = `Daog ang CPU! (First to ${maxScore})`;
+            }
+            resultText_p.style.textShadow = "0 0 10px gold, 0 0 20px red, 0 0 40px orange";
+            fetchArcadeAdvice();
+          }
+
+        }, 1000);
+      }, 800);
     }
-  }, 600);
+  }, 800); // Chant speed
 }
 
 // --------- Attach handlers ----------

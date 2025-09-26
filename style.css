@@ -583,6 +583,7 @@ thead{
   100% { transform: scale(1); opacity: 1; }
 }
 
+/* Theme Styles */
 body.cyberpunk {
   background: radial-gradient(circle at top, #2a003f, #0d001a, #000);
   color: #ff77ff;
@@ -615,4 +616,53 @@ body.retro-green #score_board,
 body.retro-green .modal-content {
   border-color: #00ff66;
   box-shadow: 0 0 15px #00ff66, 0 0 30px limegreen;
+}
+
+.battle-box {
+  text-align: center;
+  padding: 30px;
+  border: 2px solid gold;
+  border-radius: 15px;
+  background: rgba(0,0,0,0.85);
+  max-width: 600px;
+  margin: 10% auto;
+}
+
+.hands {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.hand {
+  width: 120px;
+  height: 120px;
+  background: url("./images/rock.png") center/contain no-repeat;
+}
+
+.user-hand {
+  animation: fist-bump 0.5s infinite alternate;
+}
+
+.cpu-hand {
+  animation: fist-bump 0.5s infinite alternate;
+}
+
+.cpu-wrapper {
+  transform: scaleX(-1); 
+}
+
+@keyframes fist-bump {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+#chantText {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 15px;
+  text-shadow: 0 0 10px gold, 0 0 20px orange;
 }
