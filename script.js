@@ -307,31 +307,17 @@ const fullscreenBtn = document.getElementById("fullscreenBtn");
 fullscreenBtn.addEventListener("click", () => {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen().then(() => {
-      document.body.classList.add("fullscreen-active");
       fullscreenBtn.textContent = "Exit Fullscreen";
+      fullscreenBtn.classList.add("exit-fullscreen");
+      fullscreenBtn.style.right = "-6%"; 
     }).catch(err => {
       alert(`Error attempting fullscreen: ${err.message}`);
     });
   } else {
     document.exitFullscreen().then(() => {
-      document.body.classList.remove("fullscreen-active");
-      fullscreenBtn.textContent = "Fullscreen";
-    });
-  }
-});
-
-// For Exit Fullscreen 
-fullscreenBtn.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().then(() => {
-      fullscreenBtn.textContent = "Exit Fullscreen";
-      fullscreenBtn.classList.add("exit-fullscreen");
-      fullscreenBtn.classList.add("Exit Fullscreen").style.right = "-6%";
-    });
-  } else {
-    document.exitFullscreen().then(() => {
       fullscreenBtn.textContent = "Fullscreen";
       fullscreenBtn.classList.remove("exit-fullscreen");
+      fullscreenBtn.style.right = ""; 
     });
   }
 });
