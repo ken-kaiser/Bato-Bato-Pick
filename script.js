@@ -9,8 +9,24 @@ class RockPaperScissors {
     this.score = { user: 0, cpu: 0 };
   }
 
-  generateCPUResponse() {
+  generateCPUResponse(userSelection) {
     const options = ['Bato', 'Papel', 'Gunting'];
+    let difficulty = document.getElementById("difficulty")?.value;
+
+    // Set counter chance per difficulty. It depends if unsa ka maayo ang computer.
+    let counterChance = 0;
+    if (difficulty === "easy") counterChance = 0.10;   
+    else if (difficulty === "normal") counterChance = 0.20; 
+    else if (difficulty === "hard") counterChance = 0.30;   
+
+    // Decide if CPU should counter
+    if (Math.random() < counterChance) {
+      if (userSelection === 'Bato') return 'Papel';     
+      if (userSelection === 'Papel') return 'Gunting';  
+      if (userSelection === 'Gunting') return 'Bato';   
+    }
+
+    // Otherwise random choice
     const randomIndex = Math.floor(Math.random() * options.length);
     return options[randomIndex];
   }
@@ -33,7 +49,7 @@ class RockPaperScissors {
   }
 
   play(userSelection) {
-    const cpuSelection = this.generateCPUResponse();
+    const cpuSelection = this.generateCPUResponse(userSelection); 
     console.log("CPU Selection:", cpuSelection);
     const winner = this.determineWinner(userSelection, cpuSelection);
 
@@ -85,6 +101,9 @@ function safePlay(audio) {
 // Game Over flag 
 let gameOver = false;
 let maxScore = 5;
+let difficulty = "normal";
+let userGameStreak = 0;
+let cpuGameStreak = 0;
 
 const gameLevelSelect = document.getElementById("game_level");
 if (gameLevelSelect) {
@@ -93,6 +112,15 @@ if (gameLevelSelect) {
     reset_function(); // reset game when level changes
   });
 }
+
+const difficultySelect = document.getElementById("difficulty");
+if (difficultySelect) {
+  difficultySelect.addEventListener("change", () => {
+    difficulty = difficultySelect.value;
+    console.log("Difficulty set to:", difficulty);
+  });
+}
+
 
 // Reset function 
 reset_btn.addEventListener("click", reset_function, false);
@@ -140,7 +168,7 @@ function animateChoice(choiceDiv, userSelection) {
 
       // Reveal choices after short pause
       setTimeout(() => {
-        const cpuSelection = game.generateCPUResponse();
+        const cpuSelection = game.generateCPUResponse(userSelection);
 
         // Update hands to final choices
         if (userSelection === "Bato") userHand.style.backgroundImage = 'url("./images/rock.png")';
@@ -172,11 +200,31 @@ function animateChoice(choiceDiv, userSelection) {
           // Game Over check
           if (game.score.user === maxScore || game.score.cpu === maxScore) {
             gameOver = true;
+
             if (game.score.user === maxScore) {
               resultText_p.innerHTML = `Daog Ka! (First to ${maxScore})`;
+
+              // Update streak counters
+              userGameStreak++;
+              cpuGameStreak = 0;
+
+              // Show streak only if >= 2 consecutive wins
+              if (userGameStreak >= 2) {
+                showStreakMessage(`You got ${userGameStreak}x wins streak!`, "user-streak");
+              }
+
             } else {
               resultText_p.innerHTML = `Daog ang CPU! (First to ${maxScore})`;
+
+              // Update streak counters
+              cpuGameStreak++;
+              userGameStreak = 0;
+
+              if (cpuGameStreak >= 2) {
+                showStreakMessage(`CPU got ${cpuGameStreak}x wins streak!`, "cpu-streak");
+              }
             }
+
             resultText_p.style.textShadow = "0 0 10px gold, 0 0 20px red, 0 0 40px orange";
             fetchArcadeAdvice();
           }
@@ -321,3 +369,14 @@ fullscreenBtn.addEventListener("click", () => {
     });
   }
 });
+
+function showStreakMessage(message, type) {
+  const streakBox = document.getElementById("streakMessage");
+  streakBox.textContent = message;
+  streakBox.className = type;
+  streakBox.classList.add("show");
+
+  setTimeout(() => {
+    streakBox.classList.remove("show");
+  }, 5500); // hide after 3s
+}

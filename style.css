@@ -467,13 +467,14 @@ button:hover {
 }
 
 .choice {
+  margin-top: -25px;
   flex: 1 1 140px; 
   max-width: 200px; 
   text-align: center;
   border: 8px solid gold;
   border-radius: 50%;
   padding: 0.8rem;
-  transition: all 0.5s ease-in-out;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
 }
 
 .choice img {
@@ -786,4 +787,54 @@ body.fullscreen-active #comp_label {
   :fullscreen #gameContainer {
     transform: scale(0.8);
   }
+}
+
+#streakMessage {
+  position: fixed;
+  top: 20px;
+  left: -100%; /* start off-screen */
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 10px;
+  color: white;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+}
+
+#streakMessage.show {
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  animation: fadeOut 1.5s ease forwards;
+  animation-delay: 4s;
+}
+
+.user-streak {
+  background: #4CAF50; /* green for user */
+}
+
+.cpu-streak {
+  background: #f44336; /* red for CPU */
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-30px);
+  }
+}
+
+#difficulty {
+  font-size: 20px;  
+  padding: 4px 8px;  
+  border-radius: 6px; 
+  width: auto;      
+  height: auto;      
+}
+
+label[for="difficulty"] {
+  font-size: 20px; 
+  margin-right: 6px; 
 }
