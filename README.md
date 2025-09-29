@@ -14,6 +14,8 @@ It combines **retro neon visuals**, **arcade-style sound effects**, and even **A
 **API Fun** – Displays random jokes or advice when the game ends.  
 **Instructions & Intro Modals** – Easy-to-understand guide for first-time players.  
 **First-to-N Scoring System** – Choose how many wins it takes to be the champ!  
+**Difficulty Levels** – Select Easy, Normal, or Hard mode to adjust CPU intelligence.
+**Win Streak Messages** – Get rewarded with a glowing message for consecutive wins (user or CPU).
 
 ---
 
@@ -21,9 +23,11 @@ It combines **retro neon visuals**, **arcade-style sound effects**, and even **A
 1. Choose your move: **Bato (Rock)**, **Papel (Paper)**, or **Gunting (Scissors)**.  
 2. Watch the fists shake with the chant: “Bato… Bato… Pick!”
 3. Both choices are revealed perfectly.  
-3. Winner of round is announced.  
-4. First to reach the target score (3, 4, or 5) wins the game!  
-5. Reset anytime with the **RESET** button.  
+4. Winner of round is announced.  
+5. First to reach the target score (3, 4, or 5) wins the game!  
+6. Select a Difficulty to change CPU challenge.
+7. Build up a win streak to see special streak messages!
+8. Reset anytime with the **RESET** button.  
 
 ---
 
